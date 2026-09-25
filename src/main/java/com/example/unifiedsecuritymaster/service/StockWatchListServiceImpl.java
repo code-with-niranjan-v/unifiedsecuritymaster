@@ -29,7 +29,7 @@ public class StockWatchListServiceImpl implements StockWatchListService {
                 throw new AssetNotFoundException();
             }
         }else{
-            throw new StringIndexOutOfBoundsException();
+            throw new StockNotFound();
         }
     }
 
