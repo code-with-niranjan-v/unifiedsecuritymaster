@@ -28,9 +28,10 @@ import java.util.Map;
 public class BatchTriggerController {
 
     private final JobLauncher jobLauncher;
+    private final Job mutualFundNavLoadJob;
     private final Job stockDataLoadJob;
     private final StockDataRepository stockDataRepository;
-
+    private final Job commoditySpotLoadJob;
     @PostMapping("/stock-data/run")
     public ResponseEntity<Map<String, Object>> runStockDataJob() throws Exception {
 
@@ -75,4 +76,46 @@ public class BatchTriggerController {
             log.error("Scheduled run failed", e);
         }
     }
+
+    @PostMapping("/mutual-fund/run")
+    public ResponseEntity<Map<String, Object>> runMutualFundJob() throws Exception {
+
+        JobParameters params = new JobParametersBuilder()
+                .addJobParameter("businessDate", LocalDate.now().toString(), String.class, true)
+                .addJobParameter("runId", System.currentTimeMillis(), Long.class, true)
+                .toJobParameters();
+
+        JobExecution execution = jobLauncher.run(mutualFundNavLoadJob, params);
+
+//        long read    = execution.getStepExecutions().stream().mapToLong(StepExecution::getReadCount).sum();
+//        long written = execution.getStepExecutions().stream().mapToLong(StepExecution::getWriteCount).sum();
+//        long skipped = execution.getStepExecutions().stream().mapToLong(StepExecution::getSkipCount).sum();
+        long read = 0;
+        long written = 0;
+        long skipped = 0;
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("jobExecutionId", execution.getId());
+        body.put("status",         execution.getStatus().name());
+        body.put("schemesRead",    read);
+        body.put("navRecordsWritten", written);
+        body.put("skipped",        skipped);
+        return ResponseEntity.ok(body);
+    }
+
+    @PostMapping("/commodity/run")
+    public ResponseEntity<Map<String, Object>> runCommodityJob() throws Exception {
+        JobParameters params = new JobParametersBuilder()
+                .addJobParameter("businessDate", LocalDate.now().toString(), String.class, true)
+                .addJobParameter("runId", System.currentTimeMillis(), Long.class, true)
+                .toJobParameters();
+
+        JobExecution ex = jobLauncher.run(commoditySpotLoadJob, params);
+
+        return ResponseEntity.ok(Map.of(
+                "jobExecutionId", ex.getId(),
+                "status",  ex.getStatus().name(),
+                "written", 0
+        ));
+    }
+
 }

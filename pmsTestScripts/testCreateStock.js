@@ -12,7 +12,8 @@ const infosys = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+  assetId: 2
 };
 
 const tcs = {
@@ -23,7 +24,8 @@ const tcs = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const wipro = {
@@ -34,7 +36,8 @@ const wipro = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const hclTech = {
@@ -46,6 +49,7 @@ const hclTech = {
   country:  "India",
   industry: "IT Consulting & Other Services",
   sector:   "Information Technology"
+  , assetId: 2
 };
 
 const techMahindra = {
@@ -56,7 +60,8 @@ const techMahindra = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const ltiMindtree = {
@@ -67,7 +72,8 @@ const ltiMindtree = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const persistent = {
@@ -78,7 +84,8 @@ const persistent = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const coforge = {
@@ -89,7 +96,8 @@ const coforge = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const mphasis = {
@@ -100,7 +108,8 @@ const mphasis = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const oracleFinServ = {
@@ -111,7 +120,8 @@ const oracleFinServ = {
   gics:     "45103010",
   country:  "India",
   industry: "Application Software",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const ltTechServices = {
@@ -122,7 +132,8 @@ const ltTechServices = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const tataElxsi = {
@@ -133,7 +144,8 @@ const tataElxsi = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const kpitTech = {
@@ -144,7 +156,8 @@ const kpitTech = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const cyient = {
@@ -155,7 +168,8 @@ const cyient = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const birlasoft = {
@@ -166,7 +180,8 @@ const birlasoft = {
   gics:     "45102010",
   country:  "India",
   industry: "IT Consulting & Other Services",
-  sector:   "Information Technology"
+  sector:   "Information Technology",
+   assetId: 2
 };
 
 const stocks = [
@@ -174,7 +189,67 @@ const stocks = [
   ltiMindtree, persistent, coforge, mphasis, oracleFinServ,
   ltTechServices, tataElxsi, kpitTech, cyient, birlasoft
 ];
-
+const etfs = [
+  {
+    symbol:   "NIFTYBEES",
+    name:     "Nippon India ETF Nifty 50 BeES",
+    exchange: "NSE",
+    isin:     "INF204KB14I2",
+    gics:     "40203010",   // inference: Financials (open-ended index scheme) — not officially published
+    country:  "India",
+    industry: "Exchange Traded Fund",
+    sector:   "Financial Services",
+     assetId: 22
+  },
+  {
+    symbol:   "BANKBEES",
+    name:     "Nippon India ETF Nifty Bank BeES",
+    exchange: "NSE",
+    isin:     "INF204KB15I9",         // not disclosed on retrieved pages — needs verification
+    gics:     "40203010",   // inference: Financials
+    country:  "India",
+    industry: "Exchange Traded Fund",
+    sector:   "Financial Services",
+     assetId: 22
+  },
+  {
+    symbol:   "MID150BEES",
+    name:     "Nippon India ETF Nifty Midcap 150",
+    exchange: "NSE",
+    isin:     "INF204KB1V68",
+    gics:     "40203010",   // inference: Financials
+    country:  "India",
+    industry: "Exchange Traded Fund",
+    sector:   "Financial Services",
+     assetId: 22
+  },
+  {
+    symbol:   "GOLDBEES",
+    name:     "Nippon India ETF Gold BeES",
+    exchange: "NSE",
+    isin:     "INF204KB17I5",         // not disclosed on retrieved pages — needs verification
+    gics:     "40203010",   // inference: Financials (commodity ETF)
+    country:  "India",
+    industry: "Exchange Traded Fund",
+    sector:   "Commodity",
+     assetId: 24
+  },
+  {
+    symbol:   "SILVERBEES",
+    name:     "Nippon India ETF Silver BeES",
+    exchange: "NSE",
+    isin:     "INF204KC1402",         // not disclosed on retrieved pages — needs verification
+    gics:     "40203010",   // inference: Financials (commodity ETF)
+    country:  "India",
+    industry: "Exchange Traded Fund",
+    sector:   "Commodity",
+     assetId: 24
+  }
+];
 for(const stock of stocks){
     await createStock(stock);
+}
+
+for(const etf of etfs){
+  await createStock(etf);
 }

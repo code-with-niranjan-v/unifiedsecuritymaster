@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface MutualFundNavRepository extends JpaRepository<MutualFundNav, Long> {
 
-    /** Newest NAV date already stored - the delta watermark. */
+
     @Query("SELECT MAX(n.navDate) FROM MutualFundNav n WHERE n.isin = :isin")
     Optional<LocalDate> findLatestNavDate(@Param("isin") String isin);
 

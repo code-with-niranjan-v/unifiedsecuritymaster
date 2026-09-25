@@ -225,7 +225,37 @@ const reits = {
   status:              true
 };
 
+const equitlETF = {
+  assetClass:          "Equity ETF",
+  description:         "Equity Exchange Traded Fund asset class",
+  assetSubclass:       "Index ETF",
+  risk:                "HIGH",
+  investmentHorizon:   "LONG",
+  subAssetDescription: "Index-tracking ETFs listed on Exchanges (Nifty 50, Nifty Bank, Midcap 150, etc.)",
+  status:              true
+};
 
+
+const debtETF = {
+  assetClass:          "Debt ETF",
+  description:         "Debt Exchange Traded Fund asset class",
+  assetSubclass:       "G-Sec ETF",
+  risk:                "LOW",
+  investmentHorizon:   "SHORT_TO_MEDIUM",
+  subAssetDescription: "G-Sec / money market ETFs listed on Exchanges (Nifty 8-13 yr G-Sec, Liquid, etc.)",
+  status:              true
+};
+
+
+const comodityETF = {
+  assetClass:          "Commodity ETF",
+  description:         "Commodity Exchange Traded Fund asset class",
+  assetSubclass:       "Physical ETF",
+  risk:                "MEDIUM",
+  investmentHorizon:   "LONG",
+  subAssetDescription: "Physical-backed ETFs listed on Exchanges (Gold BeES, Silver BeES)",
+  status:              true
+};
 const assets = [
   cash,
   equityStock,
@@ -247,7 +277,10 @@ const assets = [
   fiJunkBond,
   fiCertificateOfDeposit,
   commoditiesGold,
-  reits
+  reits,
+  equitlETF,
+  debtETF,
+  comodityETF
 ];
 
 for(const asset of assets){
