@@ -39,5 +39,7 @@ public class AddBondDTO {
 
     private Integer assetId;
 
+    private String country;
+
 
 }

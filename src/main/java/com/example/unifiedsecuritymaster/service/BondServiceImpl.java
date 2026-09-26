@@ -25,7 +25,7 @@ public class BondServiceImpl implements BondService {
 
         if(assetRepository.existsById(addBondDTO.getAssetId())){
             Asset asset = assetRepository.findById(addBondDTO.getAssetId()).get();
-            Bond bond = new Bond(null, addBondDTO.getIsin(), addBondDTO.getName(), addBondDTO.getIssuerName(), addBondDTO.getBondType(), addBondDTO.getExchange(), addBondDTO.getCurrency(), addBondDTO.getFaceValue(), addBondDTO.getCouponRate(), addBondDTO.getCouponFrequency(), addBondDTO.getIssueDate(), addBondDTO.getMaturityDate(), null, null, addBondDTO.getCreditRating(), null, asset);
+            Bond bond = new Bond(null, addBondDTO.getIsin(), addBondDTO.getName(), addBondDTO.getIssuerName(), addBondDTO.getBondType(), addBondDTO.getExchange(), addBondDTO.getCurrency(), addBondDTO.getFaceValue(), addBondDTO.getCouponRate(), addBondDTO.getCouponFrequency(), addBondDTO.getIssueDate(), addBondDTO.getMaturityDate(), null, null, addBondDTO.getCreditRating(), null, asset,addBondDTO.getCountry());
             bondRepository.save(bond);
             return "Bond added successfully";
         }else{

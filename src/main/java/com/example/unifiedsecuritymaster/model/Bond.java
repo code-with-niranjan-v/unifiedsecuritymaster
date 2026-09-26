@@ -54,5 +54,6 @@ public class Bond {
     @ManyToOne
     private Asset asset;
 
+    private String country;
 
 }

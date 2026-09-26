@@ -255,6 +255,7 @@ const bonds = [
   ltTechServicesBond, tataElxsiBond, kpitTechBond, cyientBond, birlasoftBond
 ];
 
-for (const bond of bonds) {
+for (let bond of bonds) {
+    bond = {...bond,country:"IN"}
     await createBond(bond);
 }

@@ -32,6 +32,7 @@ public class BatchTriggerController {
     private final Job stockDataLoadJob;
     private final StockDataRepository stockDataRepository;
     private final Job commoditySpotLoadJob;
+    private final Job securityMasterSyncJob;
     @PostMapping("/stock-data/run")
     public ResponseEntity<Map<String, Object>> runStockDataJob() throws Exception {
 
@@ -116,6 +117,24 @@ public class BatchTriggerController {
                 "status",  ex.getStatus().name(),
                 "written", 0
         ));
+    }
+
+    @PostMapping("/security-master/sync")
+    public ResponseEntity<Map<String, Object>> syncSecurityMaster() throws Exception {
+
+        JobParameters params = new JobParametersBuilder()
+                .addJobParameter("runId", System.currentTimeMillis(), Long.class, true)
+                .toJobParameters();
+
+        JobExecution ex = jobLauncher.run(securityMasterSyncJob, params);
+
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("status", ex.getStatus().name());
+        ex.getStepExecutions().forEach(se ->
+                body.put(se.getStepName(), Map.of(
+                        "read",    se.getReadCount(),
+                        "written", se.getWriteCount())));
+        return ResponseEntity.ok(body);
     }
 
 }
