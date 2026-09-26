@@ -39,7 +39,7 @@ public class StockDataJobConfig {
 
     private final BatchProperties batchProps;
 
-    // ==================== READER ====================
+
     @Bean
     public RepositoryItemReader<StockWatchList> watchListReader(StockWatchListRepository repo) {
         return new RepositoryItemReaderBuilder<StockWatchList>()
@@ -77,7 +77,7 @@ public class StockDataJobConfig {
         return new ListUnpackingItemWriter<>(delegate);
     }
 
-    // ==================== STEP ====================
+
     @Bean
     public Step loadStockDataStep(JobRepository jobRepository,
                                   PlatformTransactionManager transactionManager,
@@ -105,7 +105,7 @@ public class StockDataJobConfig {
                 .build();
     }
 
-    // ==================== JOB ====================
+
     @Bean
     public Job stockDataLoadJob(JobRepository jobRepository, Step loadStockDataStep) {
         return new JobBuilder(JOB_NAME, jobRepository)

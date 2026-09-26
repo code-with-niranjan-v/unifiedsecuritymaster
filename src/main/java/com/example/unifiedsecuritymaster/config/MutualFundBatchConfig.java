@@ -40,7 +40,7 @@ public class MutualFundBatchConfig {
 
     private final BatchProperties batchProps;
 
-    // ==================== READER ====================
+
     @Bean
     public RepositoryItemReader<MutualFundWatchList> mfWatchListReader(
             MutualFundWatchListRepository repo) {
@@ -55,7 +55,7 @@ public class MutualFundBatchConfig {
                 .build();
     }
 
-    // ==================== WRITER ====================
+
     @Bean
     public JdbcBatchItemWriter<MutualFundNav> mfNavJdbcWriter(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<MutualFundNav>()
@@ -82,7 +82,6 @@ public class MutualFundBatchConfig {
         return new ListUnpackingItemWriter<>(delegate);
     }
 
-    // ==================== STEP ====================
     @Bean
     public Step loadMutualFundNavStep(
             JobRepository jobRepository,
@@ -113,7 +112,6 @@ public class MutualFundBatchConfig {
                 .build();
     }
 
-    // ==================== JOB ====================
     @Bean
     public Job mutualFundNavLoadJob(JobRepository jobRepository,
                                     Step loadMutualFundNavStep) {

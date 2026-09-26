@@ -27,7 +27,6 @@ public class MutualFundToSecurityProcessor
             return null;
         }
 
-        // MFs have no ticker -> use ISIN as the symbol so the NOT NULL + unique key hold
         String symbol = wl.getIsin().trim().toUpperCase();
 
         SecurityMaster sm = securityRepo

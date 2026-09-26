@@ -42,7 +42,6 @@ public class StockCsvProcessor implements ItemProcessor<StockWatchList, List<Sto
 
         LocalDate to = LocalDate.now();
 
-        // ---------- GUARD 1: recently refreshed? ----------
         if (wl.getLastUpdatedAt() != null) {
             LocalDateTime cutoff = LocalDateTime.now()
                     .minusHours(props.getSkipIfUpdatedWithinHours());
@@ -54,7 +53,6 @@ public class StockCsvProcessor implements ItemProcessor<StockWatchList, List<Sto
             }
         }
 
-        // ---------- GUARD 2: compute the delta window ----------
         LocalDate from;
         Optional<LocalDate> watermark = stockDataRepository.findLatestTradeDate(wl.getSymbol());
 
@@ -100,7 +98,6 @@ public class StockCsvProcessor implements ItemProcessor<StockWatchList, List<Sto
                         .build());
             }
 
-            // stamp the watchlist row so you can see when it was last refreshed
             wl.setLastUpdatedAt(LocalDateTime.now());
             watchListRepository.save(wl);
 
@@ -114,7 +111,6 @@ public class StockCsvProcessor implements ItemProcessor<StockWatchList, List<Sto
         }
     }
 
-    // ---------- conversion helpers ----------
 
     private static BigDecimal toDecimal(String value) {
         String s = strip(value);
@@ -138,8 +134,7 @@ public class StockCsvProcessor implements ItemProcessor<StockWatchList, List<Sto
         }
     }
 
-    /** Removes grouping commas, rupee glyph, BOM, NBSP; maps "-"/"NA" to null. */
-    private static String strip(String value) {
+   private static String strip(String value) {
         if (value == null) return null;
         String s = value.replace(",", "")
                 .replace("\u20B9", "")

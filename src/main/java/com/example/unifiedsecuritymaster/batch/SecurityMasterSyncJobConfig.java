@@ -65,7 +65,6 @@ public class SecurityMasterSyncJobConfig {
                 .build();
     }
 
-    // ==================== STEP 2: MUTUAL FUNDS ====================
     @Bean
     public RepositoryItemReader<MutualFundWatchList> smFundReader(MutualFundWatchListRepository repo) {
         return new RepositoryItemReaderBuilder<MutualFundWatchList>()
@@ -87,7 +86,6 @@ public class SecurityMasterSyncJobConfig {
                 .build();
     }
 
-    // ==================== STEP 3: COMMODITIES ====================
     @Bean
     public RepositoryItemReader<CommodityWatchList> smCommodityReader(CommodityWatchListRepository repo) {
         return new RepositoryItemReaderBuilder<CommodityWatchList>()
@@ -109,7 +107,6 @@ public class SecurityMasterSyncJobConfig {
                 .build();
     }
 
-    // ==================== JOB ====================
     @Bean
     public Job securityMasterSyncJob(JobRepository jobRepository,
                                      Step syncStocksStep,

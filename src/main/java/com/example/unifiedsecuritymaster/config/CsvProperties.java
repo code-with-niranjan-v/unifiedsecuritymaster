@@ -38,7 +38,7 @@ public class CsvProperties {
     private int     connectTimeoutMs         = 10000;
     private int     readTimeoutMs            = 120000;
 
-    // ---- incremental load settings ----
+
     private int initialLookbackDays          = 1825;
     private int overlapDays                  = 5;
     private int skipIfUpdatedWithinHours     = 12;

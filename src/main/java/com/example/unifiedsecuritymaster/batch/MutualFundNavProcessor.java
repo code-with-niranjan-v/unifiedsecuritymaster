@@ -32,26 +32,22 @@ public class MutualFundNavProcessor implements ItemProcessor<MutualFundWatchList
     @Override
     public List<MutualFundNav> process(MutualFundWatchList wl) {
 
-        // ---------- GUARD 1: inactive scheme ----------
         if (Boolean.FALSE.equals(wl.getStatus())) {
             log.debug("[{}] status=false, skipping", wl.getIsin());
             return null;
         }
 
-        // ---------- GUARD 2: missing ISIN ----------
         if (wl.getIsin() == null || wl.getIsin().isBlank()) {
             log.warn("Watchlist id={} has no ISIN, skipping", wl.getId());
             return null;
         }
 
-        // ---------- GUARD 3: already refreshed today ----------
         LocalDate today = LocalDate.now();
         if (today.equals(wl.getLastUpdatedAt())) {
             log.info("[{}] already refreshed on {}, skipping", wl.getIsin(), today);
             return null;
         }
 
-        // ---------- Delta window ----------
         LocalDate since;
         Optional<LocalDate> watermark = navRepository.findLatestNavDate(wl.getIsin());
 
@@ -64,7 +60,6 @@ public class MutualFundNavProcessor implements ItemProcessor<MutualFundWatchList
             log.info("[{}] INITIAL full load: since={}", wl.getIsin(), since);
         }
 
-        // ---------- Fetch + map ----------
         MfNavApiResponse response = apiService.fetchNav(wl.getIsin(), since);
 
         List<MutualFundNav> result = new ArrayList<>(response.getData().size());
