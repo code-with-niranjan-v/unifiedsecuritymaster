@@ -128,6 +128,7 @@ public class SecurityMasterImpl implements SecurityMasterService {
             securityInfoDTO.setSymbol(securityMaster.getSymbol());
             securityInfoDTO.setIsin(securityMaster.getIsin());
             securityInfoDTO.setName(securityMaster.getName());
+            securityInfoDTO.setGicsSector(securityMaster.getGicsSector());
             SecurityType type = securityMaster.getSecurityType();
             switch(type){
                 case EQUITY,ETF ->{
