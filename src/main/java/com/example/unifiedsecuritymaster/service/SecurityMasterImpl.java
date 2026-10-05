@@ -49,7 +49,8 @@ public class SecurityMasterImpl implements SecurityMasterService {
                     addSecurityMasterDTO.getCountryCode(),
                     addSecurityMasterDTO.getStatus(),
                     addSecurityMasterDTO.getListingDate(),
-                    addSecurityMasterDTO.getLotSize()
+                    addSecurityMasterDTO.getLotSize(),
+                    addSecurityMasterDTO.getEquityCategory()
             );
 
             securityMasterRepository.save(securityMaster);
@@ -129,6 +130,7 @@ public class SecurityMasterImpl implements SecurityMasterService {
             securityInfoDTO.setIsin(securityMaster.getIsin());
             securityInfoDTO.setName(securityMaster.getName());
             securityInfoDTO.setGicsSector(securityMaster.getGicsSector());
+            securityInfoDTO.setEquityCategory(securityMaster.getEquityCategory() == null ? null : securityMaster.getEquityCategory().name());
             SecurityType type = securityMaster.getSecurityType();
             switch(type){
                 case EQUITY,ETF ->{

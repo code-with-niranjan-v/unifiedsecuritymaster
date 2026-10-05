@@ -1,5 +1,6 @@
 package com.example.unifiedsecuritymaster.model;
 
+import com.example.unifiedsecuritymaster.model.enums.EquityCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,4 +44,6 @@ public class StockWatchList {
     @ManyToOne
     private Asset asset;
 
+    @Enumerated(EnumType.STRING)
+    private EquityCategory equityCategory;
 }

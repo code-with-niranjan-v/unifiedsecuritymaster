@@ -38,6 +38,7 @@ public class MutualFundToSecurityProcessor
         sm.setIsin(wl.getIsin().trim().toUpperCase());
         sm.setName(truncate(wl.getSchemeName(), 200));
         sm.setSecurityType(SecurityType.MUTUAL_FUND);
+        sm.setEquityCategory(wl.getEquityCategory());
         sm.setIssuerName(extractAmc(wl.getSchemeName()));
         sm.setAsset(wl.getAsset());                 // already linked on the watchlist
         sm.setCurrencyCode("INR");

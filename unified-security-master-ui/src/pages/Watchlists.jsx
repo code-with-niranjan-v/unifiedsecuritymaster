@@ -19,13 +19,15 @@ function Watchlists() {
     country: "",
     industry: "",
     sector: "",
-    assetId: ""
+    assetId: "",
+    equityCategory: ""
   });
 
   const [mutualFundForm, setMutualFundForm] = useState({
     isin: "",
     schemeName: "",
-    assetId: ""
+    assetId: "",
+    equityCategory: ""
   });
 
   const [commodityForm, setCommodityForm] = useState({
@@ -127,7 +129,8 @@ function Watchlists() {
         country: "",
         industry: "",
         sector: "",
-        assetId: ""
+        assetId: "",
+        equityCategory: ""
       });
 
       await fetchStocks();
@@ -183,7 +186,8 @@ function Watchlists() {
       setMutualFundForm({
         isin: "",
         schemeName: "",
-        assetId: ""
+        assetId: "",
+        equityCategory: ""
       });
 
       await fetchMutualFunds();
@@ -428,6 +432,8 @@ function Watchlists() {
                 }
               />
 
+              <Select label="Equity Category" value={stockForm.equityCategory} onChange={(value) => setStockForm({ ...stockForm, equityCategory: value })} options={["SMALL_CAP", "MID_CAP", "LARGE_CAP"]} required />
+
               <Input
                 label="Asset ID"
                 type="number"
@@ -467,6 +473,7 @@ function Watchlists() {
                       <th>Country</th>
                       <th>Industry</th>
                       <th>Sector</th>
+                      <th>Equity Category</th>
                       <th>Asset ID</th>
                       <th>Action</th>
                     </tr>
@@ -484,6 +491,7 @@ function Watchlists() {
                         <td>{stock.country}</td>
                         <td>{stock.industry}</td>
                         <td>{stock.sector}</td>
+                        <td>{stock.equityCategory || "-"}</td>
                         <td>{stock.asset?.id ?? "-"}</td>
                         <td>
                           <button className="danger-button small-button"
@@ -556,6 +564,8 @@ function Watchlists() {
                 required
               />
 
+              <Select label="Equity Category" value={mutualFundForm.equityCategory} onChange={(value) => setMutualFundForm({ ...mutualFundForm, equityCategory: value })} options={["SMALL_CAP", "MID_CAP", "LARGE_CAP"]} required />
+
               <Input
                 label="Asset ID"
                 type="number"
@@ -589,6 +599,7 @@ function Watchlists() {
                       <th>ID</th>
                       <th>ISIN</th>
                       <th>Scheme Name</th>
+                      <th>Equity Category</th>
                       <th>Asset ID</th>
                       <th>Status</th>
                       <th>Last Updated</th>
@@ -602,6 +613,7 @@ function Watchlists() {
                         <td>{mf.id}</td>
                         <td>{mf.isin}</td>
                         <td>{mf.schemeName}</td>
+                        <td>{mf.equityCategory || "-"}</td>
                         <td>{mf.asset?.id ?? "-"}</td>
                         <td>{mf.status === true ? "Active" : mf.status === false ? "Inactive" : "-"}</td>
                         <td>{mf.lastUpdatedAt ? new Date(mf.lastUpdateAt).toLocaleString() : "-"}</td>

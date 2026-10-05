@@ -24,7 +24,7 @@ public class StockWatchListServiceImpl implements StockWatchListService {
         if(!stockWatchListRepository.existsBySymbol(addStockDTO.getSymbol())){
             if(assetRepository.existsById(addStockDTO.getAssetId())){
                 Asset asset = assetRepository.findById(addStockDTO.getAssetId()).get();
-                StockWatchList stockWatchList = new StockWatchList(null,addStockDTO.getSymbol(),addStockDTO.getName(),addStockDTO.getExchange(),addStockDTO.getIsin(),addStockDTO.getGics(),addStockDTO.getCountry(),addStockDTO.getIndustry(),addStockDTO.getSector(),null,asset);
+                StockWatchList stockWatchList = new StockWatchList(null,addStockDTO.getSymbol(),addStockDTO.getName(),addStockDTO.getExchange(),addStockDTO.getIsin(),addStockDTO.getGics(),addStockDTO.getCountry(),addStockDTO.getIndustry(),addStockDTO.getSector(),null,asset,addStockDTO.getEquityCategory());
                 stockWatchListRepository.save(stockWatchList);
                 return "Stock is added to the watchlist.";
             }else{

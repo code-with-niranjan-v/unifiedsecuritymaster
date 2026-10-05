@@ -20,7 +20,8 @@ const emptyForm = {
   countryCode: "",
   status: "",
   listingDate: "",
-  lotSize: ""
+  lotSize: "",
+  equityCategory: ""
 };
 
 function SecurityMaster() {
@@ -93,6 +94,7 @@ function SecurityMaster() {
         symbol: form.symbol,
         name: form.name,
         securityType: form.securityType,
+        equityCategory: form.equityCategory || null,
         assertId: form.assertId
           ? Number(form.assertId)
           : null,
@@ -154,6 +156,7 @@ function SecurityMaster() {
         symbol: form.symbol,
         name: form.name,
         securityType: form.securityType,
+        equityCategory: form.equityCategory || null,
 
         asset: form.assertId
           ? {
@@ -243,7 +246,8 @@ function SecurityMaster() {
       countryCode: security.countryCode ?? "",
       status: security.status ?? "",
       listingDate: security.listingDate ?? "",
-      lotSize: security.lotSize ?? ""
+      lotSize: security.lotSize ?? "",
+      equityCategory: security.equityCategory ?? ""
     });
 
     window.scrollTo({
@@ -321,6 +325,15 @@ function SecurityMaster() {
             ]}
             required
           />
+
+          {(["EQUITY", "MUTUAL_FUND"].includes(form.securityType)) && (
+            <Select
+              label="Equity Category"
+              value={form.equityCategory}
+              onChange={(value) => updateField("equityCategory", value)}
+              options={["SMALL_CAP", "MID_CAP", "LARGE_CAP"]}
+            />
+          )}
 
           <Input
             label="Asset ID"
@@ -479,6 +492,7 @@ function SecurityMaster() {
                 <th>Symbol</th>
                 <th>Name</th>
                 <th>Type</th>
+                <th>Equity Category</th>
                 <th>Exchange</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -499,6 +513,7 @@ function SecurityMaster() {
                   <td>{security.symbol}</td>
                   <td>{security.name}</td>
                   <td>{security.securityType}</td>
+                  <td>{security.equityCategory || "-"}</td>
                   <td>{security.exchangeCode}</td>
                   <td>{security.status}</td>
 

@@ -19,4 +19,5 @@ public class SecurityInfoDTO {
     private String gicsSector;
 
 
+    private String equityCategory;
 }

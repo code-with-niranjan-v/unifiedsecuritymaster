@@ -1,6 +1,7 @@
 package com.example.unifiedsecuritymaster.dto.request;
 
 import com.example.unifiedsecuritymaster.model.Asset;
+import com.example.unifiedsecuritymaster.model.enums.EquityCategory;
 import com.example.unifiedsecuritymaster.model.enums.SecurityType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -67,4 +68,5 @@ public class AddSecurityMasterDTO {
     private Integer lotSize;
 
 
+    private EquityCategory equityCategory;
 }

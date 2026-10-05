@@ -34,6 +34,7 @@ public class StockToSecurityProcessor implements ItemProcessor<StockWatchList, S
         sm.setIsin(wl.getIsin());
         sm.setName(truncate(wl.getName(), 200));
         sm.setSecurityType(SecurityType.EQUITY);
+        sm.setEquityCategory(wl.getEquityCategory());
         sm.setGicsSubIndustry(truncate(wl.getIndustry(), 30));
         sm.setGicsSector(truncate(wl.getSector(), 30));
         sm.setGicsIndustry(truncate(wl.getIndustry(), 30));

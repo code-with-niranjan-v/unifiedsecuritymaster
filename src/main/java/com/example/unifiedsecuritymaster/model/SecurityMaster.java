@@ -1,5 +1,6 @@
 package com.example.unifiedsecuritymaster.model;
 
+import com.example.unifiedsecuritymaster.model.enums.EquityCategory;
 import com.example.unifiedsecuritymaster.model.enums.SecurityType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -83,4 +84,7 @@ public class SecurityMaster {
     private Integer lotSize;
 
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private EquityCategory equityCategory;
 }
