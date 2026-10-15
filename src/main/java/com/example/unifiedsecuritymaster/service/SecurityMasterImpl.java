@@ -234,7 +234,7 @@ public class SecurityMasterImpl implements SecurityMasterService {
                 securityInfoDTO.setPrice(((Number) currentPrice).doubleValue());
             }
 
-            if(securityInfoDTO.getId()==31){
+            if(securityInfoDTO.getSymbol().equals("GOLD")){
                 securityInfoDTO.setPrice(securityInfoDTO.getPrice()/10);
             }
 
